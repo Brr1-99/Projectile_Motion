@@ -73,13 +73,13 @@ if __name__ == '__main__':
 		if shoot:
 			if ball.y < height - radius :
 				time += 0.03
-				ball_path_list.append((ball.x, ball.y))
-				next_coordinates = ball.next_position( x, y, power, angle, time)
+				next_coordinates = ball.next_position(x, y, power, angle, time)
 				ball.x, ball.y = next_coordinates
 				if next_coordinates[0] < radius :
 					ball.x = radius + 1 + abs(next_coordinates[0])
 				elif next_coordinates[0] > width - radius:
 					ball.x = 2*width - next_coordinates[0] - radius + 1
+				ball_path_list.append((ball.x, ball.y))
 			else:
 				shoot = False
 				time = 0
