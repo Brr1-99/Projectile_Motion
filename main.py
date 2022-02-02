@@ -84,7 +84,6 @@ if __name__ == '__main__':
 					bounce = True
 				ball_path_list.append((ball.x, ball.y))
 			else:
-				print(power)
 				if power < 1:
 					shoot = False
 					time = 0
@@ -112,8 +111,8 @@ if __name__ == '__main__':
 				current_mouse_pos = event.pos
 			elif event.type == pygame.MOUSEBUTTONDOWN:
 				if not shoot:
-					x,y = ball.x, ball.y
 					ball_path_list = []
+					x,y = ball.x, ball.y
 					mouse_position  = pygame.mouse.get_pos()
 					angle = ball.calculate_angle(mouse_position)
 					shoot = True
