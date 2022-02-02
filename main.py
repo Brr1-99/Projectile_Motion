@@ -55,6 +55,7 @@ angle = 0
 shoot = False
 power = 0
 time = 0
+bounce = False
 
 def redraw():
 	screen.fill(white)
@@ -77,16 +78,28 @@ if __name__ == '__main__':
 				ball.x, ball.y = next_coordinates
 				if next_coordinates[0] < radius :
 					ball.x = radius + 1 + abs(next_coordinates[0])
+					bounce = True
 				elif next_coordinates[0] > width - radius:
 					ball.x = 2*width - next_coordinates[0] - radius + 1
+					bounce = True
 				ball_path_list.append((ball.x, ball.y))
 			else:
-				shoot = False
-				time = 0
-				ball.y = height - radius - 1
-				if ball.x < radius or ball.x > width - radius:
-					ball.x = initial_pos[0]
-
+				print(power)
+				if power < 1:
+					shoot = False
+					time = 0
+					ball.y = height - radius - 1
+					if ball.x < radius or ball.x > width - radius:
+						ball.x = initial_pos[0]
+				else :
+					power /= 1.6
+					time = 0.03
+					x, y = ball.x, ball.y
+					if bounce :
+						angle = (180 - angle)
+						bounce = False
+					next_coordinates = ball.next_position(x, y, power, angle, time)
+					ball.x, ball.y = next_coordinates[0], radius
 
 
 		redraw()
