@@ -8,5 +8,6 @@ green = (0, 255, 0)
 red = (255, 0, 0)
 
 radius = 15
+gravity = 9.8
 
 initial_pos = (width/2, height-radius -1)

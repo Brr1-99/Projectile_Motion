@@ -36,7 +36,7 @@ class Ball( object ):
 		yVelocity = math.sin(angle*math.pi/180)*power
 	
 		xDistance = xVelocity * time
-		yDistance = (yVelocity * time) + ((-4.9*(time**2))/2)
+		yDistance = (yVelocity * time) + ((-gravity/2*(time**2))/2)
 
 		next_x = round(xDistance + initX)
 		next_y = round(initY - yDistance )
