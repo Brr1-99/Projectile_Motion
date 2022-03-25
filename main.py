@@ -65,6 +65,7 @@ def redraw():
 	ball.draw_ball_path(ball_path_list)
 	pygame.display.update()
 
+
 if __name__ == '__main__':
 	pygame.init()
 	while True:
