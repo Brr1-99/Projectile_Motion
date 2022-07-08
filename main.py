@@ -4,7 +4,7 @@ import math
 from settings import *
 
 class Ball( object ):
-	def __init__(self, screen, x , y, radius, color):
+	def __init__(self, screen: any, x: int, y:int, radius:int, color:list[int]):
 		self.screen = screen
 		self.x = x
 		self.y = y
@@ -14,15 +14,15 @@ class Ball( object ):
 	def draw(self):
 		pygame.draw.circle(self.screen, self.color, (self.x,self.y) ,self.radius)
 
-	def draw_line(self, mouse_pos):
+	def draw_line(self, mouse_pos: list[int]):
 		pygame.draw.line(self.screen, green, (self.x,self.y), mouse_pos, 2 )
 	
-	def draw_ball_path (self, pos_list):
+	def draw_ball_path (self, pos_list: list[int]):
 		if pos_list:
 			for position in pos_list:
 				pygame.draw.circle(self.screen, red, position, 2, width=2)
 	
-	def calculate_angle(self, mouse_pos):
+	def calculate_angle(self, mouse_pos: list[int]):
 		try :
 			angle = math.atan((mouse_pos[1]-self.y)/-(mouse_pos[0]-self.x)) * 180 / math.pi
 			angle = 180 + angle if angle < 0 else angle
@@ -31,7 +31,7 @@ class Ball( object ):
 		return angle
 	
 	@staticmethod
-	def next_position(initX, initY, power, angle, time):
+	def next_position(initX: int | float, initY: int | float, power: int | float, angle: int | float, time: int | float):
 		xVelocity = math.cos(angle*math.pi/180)*power
 		yVelocity = math.sin(angle*math.pi/180)*power
 	
